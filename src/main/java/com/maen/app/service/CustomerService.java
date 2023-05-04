@@ -1,7 +1,7 @@
 package com.maen.app.service;
 
 import com.maen.app.entity.CustomerEntity;
-import com.maen.app.exceptions.RequestCreatedCustomerException;
+import com.maen.app.exceptions.RequestUpdateException;
 import com.maen.app.exceptions.ResponseDeleteIdException;
 import com.maen.app.exceptions.ResponseGetByIdException;
 import com.maen.app.repository.ICustomerRepository;
@@ -47,10 +47,10 @@ public class CustomerService {
         return this.customerRepository.save(customerEntity);
     }
 
-    public CustomerEntity updateCustomer(Integer id, CustomerEntity customerEntity) throws RequestCreatedCustomerException {
-        Optional<CustomerEntity> createdCustomer = customerRepository.findById(id);
-        if (!createdCustomer.isPresent()){
-            throw new RequestCreatedCustomerException("The Id you are trying to update does not exist.");
+    public CustomerEntity updateCustomer(Integer id, CustomerEntity customerEntity) throws RequestUpdateException {
+        Optional<CustomerEntity> customer = customerRepository.findById(id);
+        if (!customer.isPresent()){
+            throw new RequestUpdateException("The Id you are trying to update does not exist.");
         }
         CustomerEntity updateCustomer = customerRepository.findById(id).get();
         updateCustomer.setName(customerEntity.getName());

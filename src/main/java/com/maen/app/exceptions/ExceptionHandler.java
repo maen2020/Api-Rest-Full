@@ -24,9 +24,9 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
      }
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(RequestCreatedCustomerException.class)
+    @org.springframework.web.bind.annotation.ExceptionHandler(RequestUpdateException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<ErrorMessage> requestCreatedCustomerException(RequestCreatedCustomerException exception){
+    public ResponseEntity<ErrorMessage> requestUpdateCustomerException(RequestUpdateException exception){
         ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }

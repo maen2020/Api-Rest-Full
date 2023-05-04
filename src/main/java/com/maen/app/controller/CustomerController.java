@@ -1,7 +1,7 @@
 package com.maen.app.controller;
 
 import com.maen.app.entity.CustomerEntity;
-import com.maen.app.exceptions.RequestCreatedCustomerException;
+import com.maen.app.exceptions.RequestUpdateException;
 import com.maen.app.exceptions.ResponseDeleteIdException;
 import com.maen.app.exceptions.ResponseGetByIdException;
 import com.maen.app.service.CustomerService;
@@ -52,10 +52,10 @@ public class CustomerController {
      * @param id Id a actualizar.
      * @param customerEntity Informacion del id a actualizar.
      * @return Regresa la informacion actualizada.
-     * @throws RequestCreatedCustomerException Error al tratar de actualizar un id no existente.
+     * @throws RequestUpdateException Error al tratar de actualizar un id no existente.
      */
     @PatchMapping(path = "/{id}")
-    public CustomerEntity updateCustomer(@PathVariable Integer id, @RequestBody CustomerEntity customerEntity) throws RequestCreatedCustomerException{
+    public CustomerEntity updateCustomer(@PathVariable Integer id, @RequestBody CustomerEntity customerEntity) throws RequestUpdateException {
         return this.customerService.updateCustomer(id, customerEntity);
     }
 
