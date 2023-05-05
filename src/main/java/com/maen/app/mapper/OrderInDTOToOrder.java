@@ -16,6 +16,7 @@ public class OrderInDTOToOrder implements IOrderMapper<OrderInDto, OrderEntity>{
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setProduct(in.getProduct());
         orderEntity.setPrice(in.getPrice());
+        orderEntity.setCustomerId(in.getCustomerId());
 
         orderEntity.setCreationDate(LocalDate.now());
         return orderEntity;

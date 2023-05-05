@@ -1,8 +1,11 @@
 package com.maen.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +20,8 @@ public class CustomerEntity {
     private String surname;
     private String phone;
     private String email;
+
+    @OneToMany(mappedBy = "customerEntity")
+    @JsonManagedReference
+    private List<OrderEntity> orderEntity;
 }

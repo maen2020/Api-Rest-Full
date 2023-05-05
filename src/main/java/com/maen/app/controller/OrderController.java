@@ -6,7 +6,10 @@ import com.maen.app.exceptions.ResponseDeleteIdException;
 import com.maen.app.exceptions.ResponseGetByIdException;
 import com.maen.app.service.OrderService;
 import com.maen.app.service.dto.OrderInDto;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +33,9 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderEntity saveOrder(@RequestBody OrderInDto orderInDto){
-        return this.orderService.saveOrder(orderInDto);
+    public ResponseEntity<OrderEntity> saveOrder(@RequestBody OrderInDto orderInDto){
+         return ResponseEntity.status(HttpStatus.CREATED)
+                 .body(orderService.saveOrder(orderInDto));
     }
 
     @PutMapping("/{id}")

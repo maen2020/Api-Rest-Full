@@ -5,6 +5,7 @@ import com.maen.app.exceptions.RequestUpdateException;
 import com.maen.app.exceptions.ResponseDeleteIdException;
 import com.maen.app.exceptions.ResponseGetByIdException;
 import com.maen.app.service.CustomerService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +44,7 @@ public class CustomerController {
      * @return Informacion guardada en la base de datos.
      */
     @PostMapping
-    public CustomerEntity createdCustomer(@RequestBody CustomerEntity customerEntity) {
+    public CustomerEntity createdCustomer(@Valid @RequestBody CustomerEntity customerEntity) {
         return this.customerService.createdCustomer(customerEntity);
     }
 

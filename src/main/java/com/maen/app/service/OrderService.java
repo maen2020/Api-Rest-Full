@@ -1,6 +1,5 @@
 package com.maen.app.service;
 
-import com.maen.app.entity.CustomerEntity;
 import com.maen.app.entity.OrderEntity;
 import com.maen.app.exceptions.RequestUpdateException;
 import com.maen.app.exceptions.ResponseDeleteIdException;
